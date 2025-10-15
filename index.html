@@ -93,6 +93,21 @@ body { padding-bottom: 120px; }
   body { padding-bottom: 140px; }
   .nav-btn, #ui-dock .dock-link { padding:8px 12px; font-size:13px; }
 }
+  .small-table td, 
+.small-table th {
+  font-size: clamp(10px, 1.4vw, 12px);
+  padding: 5px 4px;
+  line-height: 1.4;
+   }
+  
+  @media (max-width:600px){
+  .small-table td, 
+  .small-table th {
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 6px 5px;
+}
+}
 </style>
 </head>
 
@@ -106,8 +121,8 @@ body { padding-bottom: 120px; }
 
 <div id="container">
   <div class="page" data-page="1">
-    <h1 style="text-align:center;">投手 × VO₂max — Flipfile</h1>
-    <p style="text-align:center;color:#9ca3af;">出力を生むのがウエイト。出力を戻すのが酸素。<br>両輪が揃って、先発投手は完成する。</p>
+    <h1 style="text-align:center;">投手 × VO₂max</h1>
+    <p style="text-align:center;color:#9ca3af;">出力を生むのがウエイト。<br>出力を戻すのが酸素。<br>両輪が揃って、先発投手は完成する。</p>
     <p style="text-align:center;color:#64748b;margin-top:60px;">© 2025 adjustment-lab</p>
   </div>
 
@@ -115,7 +130,7 @@ body { padding-bottom: 120px; }
  </div>
 
   <div class="page" data-page="2">
-    <h2>1. 投手にとってのVO₂maxとは？</h2>
+    <h2>1. 投手にとってVO₂maxとは？</h2>
     <p>投手の投球は「一球の力」ではなく、<strong>出力を繰り返すための回復速度</strong>で決まる。VO₂maxはその回復速度を決定づける“酸素エンジン”。</p>
   </div>
 
@@ -150,8 +165,8 @@ body { padding-bottom: 120px; }
   </div>
 
   <div class="page" data-page="6">
-    <h2>5. VO₂maxの数値が意味するもの</h2>
-    <table>
+    <h2>5. VO₂maxが意味するもの</h2>
+    <table class="small-table">
       <tr><th>VO₂max</th><th>状態</th><th>傾向</th></tr>
       <tr><td>40未満</td><td>非トレーニー</td><td>疲労蓄積・回復遅い</td></tr>
       <tr><td>45〜55</td><td>平均</td><td>一般的大学・社会人</td></tr>
@@ -179,23 +194,23 @@ body { padding-bottom: 120px; }
       <tr><td>1600m</td><td>約49</td><td>平均</td></tr>
       <tr><td>2000m</td><td>約53</td><td>良好</td></tr>
       <tr><td>2400m</td><td>約56</td><td>理想</td></tr>
-      <tr><td>2800m</td><td>約60</td><td>エース級</td></tr>
+      <tr><td>2800m</td><td>約60</td><td>トップ級</td></tr>
     </table>
   </div>
 
   <div class="page" data-page="9">
-    <h2>8. VO₂maxを高めるトレーニング例</h2>
+    <h2>8. VO₂maxを高める<br>トレーニング例</h2>
     <ul>
-      <li>インターバルラン：400m×10（レスト90秒）</li>
-      <li>トレッドミル：30秒全力→90秒回復×8セット</li>
-      <li>ウエイトサーキット：SQ→Push-up→Row→Burpee</li>
+      <li>インターバル：400m×10（レスト90秒）</li><br>
+      <li>トレッドミル：30秒全力→90秒回復×8</li><br>
+      <li>ウエイトサーキット：SQ→Push-up→Row→Burpee</li><br>
       <li>呼吸リカバリー：1分で心拍を戻す練習</li>
     </ul>
   </div>
 
   <div class="page" data-page="10">
-    <h2>9. 各カテゴリーでのVO₂max活用</h2>
-    <table>
+    <h2>9. 各カテゴリーでの活用</h2>
+    <table class="small-table">
       <tr><th>層</th><th>目安</th><th>目的</th></tr>
       <tr><td>学童</td><td>40〜48</td><td>体を動かし続ける基礎形成</td></tr>
       <tr><td>中学</td><td>45〜52</td><td>筋発達期の回復力教育</td></tr>
