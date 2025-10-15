@@ -3,47 +3,228 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>turn.js動作テストOK版</title>
+<title>投手 × VO₂max — Flipfile Lite</title>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d1117">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 
 <style>
 body {
   background:#0d1117;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  margin:0;
-  overflow:auto;
-}
-#flipbook { width:800px; height:500px; }
-.page {
-  background:#111827;
   color:#e5e7eb;
-  border:1px solid #1f2937;
-  box-sizing:border-box;
-  padding:40px;
+  font-family:'Noto Sans JP',sans-serif;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+  overflow-x:hidden;
 }
-h1{color:#60a5fa;text-align:center;}
+
+#container {
+  width:90%;
+  max-width:900px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+  border:1px solid #1f2937;
+  background:#111827;
+  padding:40px;
+  margin:60px 0 80px;
+  border-radius:12px;
+}
+
+h1,h2,h3 { color:#60a5fa; margin-top:0; }
+a { color:#93c5fd; text-decoration:none; }
+p,li { line-height:1.8; }
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{border:1px solid #1f2937;padding:8px;text-align:left;}
+th{background:#1e293b;color:#93c5fd;}
+ul{margin:8px 0 0 0;padding-left:20px;}
+
+#nav-controls {
+  position:fixed;
+  bottom:20px;
+  right:16px;
+  display:flex;
+  gap:10px;
+  z-index:100;
+}
+.nav-btn {
+  background:#1e293b;
+  border:1px solid #334155;
+  color:#e5e7eb;
+  padding:10px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.nav-btn:hover { background:#2563eb; border-color:#2563eb; }
+
+@media(max-width:768px){
+  #container { padding:24px; }
+  .nav-btn{padding:8px 12px;font-size:14px;}
+}
 </style>
 </head>
 
 <body>
-<div id="flipbook">
-  <div class="page"><h1>Page 1</h1><p>めくってみよう。</p></div>
-  <div class="page"><h1>Page 2</h1><p>ページ送り成功！</p></div>
+<div id="container">
+  <div class="page" data-page="1">
+    <h1 style="text-align:center;">投手 × VO₂max — Flipfile</h1>
+    <p style="text-align:center;color:#9ca3af;">出力を生むのがウエイト。出力を戻すのが酸素。<br>両輪が揃って、先発投手は完成する。</p>
+    <p style="text-align:center;color:#64748b;margin-top:60px;">© 2025 ADJUSTMENT LAB</p>
+  </div>
+
+  <div class="page" data-page="2">
+    <h2>1. 投手にとってのVO₂maxとは？</h2>
+    <p>投手の投球は「一球の力」ではなく、<strong>出力を繰り返すための回復速度</strong>で決まる。VO₂maxはその回復速度を決定づける“酸素エンジン”。</p>
+  </div>
+
+  <div class="page" data-page="3">
+    <h2>2. 投球エネルギーの二軸構造</h2>
+    <p><strong>ウエイト＝燃やす力／VO₂max＝燃えたあとを立て直す力</strong></p>
+    <table>
+      <tr><th>機能</th><th>内容</th><th>主な手段</th></tr>
+      <tr><td>出力系</td><td>ATP-CP系・解糖系で力を生み出す</td><td>ウエイトトレーニング</td></tr>
+      <tr><td>回復系</td><td>酸素を用いて疲労物質を処理・再合成</td><td>VO₂maxトレーニング</td></tr>
+    </table>
+  </div>
+
+  <div class="page" data-page="4">
+    <h2>3. VO₂maxが高いメリット</h2>
+    <ul>
+      <li>イニング間・登板間の回復が速い</li>
+      <li>終盤でも球速・リリース安定</li>
+      <li>交感神経の暴走を防ぐ</li>
+      <li>疲労蓄積が少なく崩れにくい</li>
+    </ul>
+  </div>
+
+  <div class="page" data-page="5">
+    <h2>4. VO₂maxが低いデメリット</h2>
+    <ul>
+      <li>回復が遅く疲労残る</li>
+      <li>球速・制球再現性が低い</li>
+      <li>心拍が下がりにくい</li>
+      <li>長回・連投に弱い</li>
+    </ul>
+  </div>
+
+  <div class="page" data-page="6">
+    <h2>5. VO₂maxの数値が意味するもの</h2>
+    <table>
+      <tr><th>VO₂max</th><th>状態</th><th>傾向</th></tr>
+      <tr><td>40未満</td><td>非トレーニー</td><td>疲労蓄積・回復遅い</td></tr>
+      <tr><td>45〜55</td><td>平均</td><td>一般的大学・社会人</td></tr>
+      <tr><td>58〜62</td><td>理想ゾーン</td><td>球威・テンポ安定</td></tr>
+    </table>
+  </div>
+
+  <div class="page" data-page="7">
+    <h2>6. クーパー走（12分走）換算</h2>
+    <p>VO₂max ≒ (距離[m] − 504.9) ÷ 44.73</p>
+    <table>
+      <tr><th>距離</th><th>VO₂max</th><th>評価</th></tr>
+      <tr><td>2500m</td><td>約45</td><td>平均</td></tr>
+      <tr><td>2800m</td><td>約52</td><td>良好</td></tr>
+      <tr><td>3100m</td><td>約58</td><td>理想</td></tr>
+      <tr><td>3200m</td><td>約60</td><td>エース級</td></tr>
+    </table>
+  </div>
+    <div class="page" data-page="8">
+    <h2>7+. YO-YOテストによるVO₂max評価</h2>
+    <p>断続的高強度運動を繰り返す能力を測定し、VO₂maxを推定するフィールドテスト。</p>
+    <p><code>VO₂max ≒ (距離[m] × 0.0084) + 36.4</code></p>
+    <table>
+      <tr><th>距離</th><th>VO₂max</th><th>評価</th></tr>
+      <tr><td>1600m</td><td>約49</td><td>平均</td></tr>
+      <tr><td>2000m</td><td>約53</td><td>良好</td></tr>
+      <tr><td>2400m</td><td>約56</td><td>理想</td></tr>
+      <tr><td>2800m</td><td>約60</td><td>エース級</td></tr>
+    </table>
+  </div>
+
+  <div class="page" data-page="9">
+    <h2>8. VO₂maxを高めるトレーニング例</h2>
+    <ul>
+      <li>インターバルラン：400m×10（レスト90秒）</li>
+      <li>トレッドミル：30秒全力→90秒回復×8セット</li>
+      <li>ウエイトサーキット：SQ→Push-up→Row→Burpee</li>
+      <li>呼吸リカバリー：1分で心拍を戻す練習</li>
+    </ul>
+  </div>
+
+  <div class="page" data-page="10">
+    <h2>9. 各カテゴリーでのVO₂max活用</h2>
+    <table>
+      <tr><th>層</th><th>目安</th><th>目的</th></tr>
+      <tr><td>学童</td><td>40〜48</td><td>体を動かし続ける基礎形成</td></tr>
+      <tr><td>中学</td><td>45〜52</td><td>筋発達期の回復力教育</td></tr>
+      <tr><td>高校</td><td>50〜57</td><td>夏場持久力・リカバリー形成</td></tr>
+      <tr><td>大学</td><td>53〜60</td><td>連戦・登板間リカバリー</td></tr>
+      <tr><td>社会人</td><td>55〜62</td><td>仕事＋練習の疲労管理</td></tr>
+      <tr><td>独立</td><td>56〜63</td><td>連投・長距離移動適応</td></tr>
+      <tr><td>プロ</td><td>58〜65+</td><td>年間通した精神的・生理的安定</td></tr>
+    </table>
+  </div>
+
+  <div class="page" data-page="11">
+    <h2>10. 総括</h2>
+    <p>「球速を上げる努力」は誰でもする。だが「次の球を同じ力で投げる努力」は少ない。</p>
+    <p>VO₂maxを鍛えることは、<strong>“最後まで戦えるエネルギー管理能力”</strong>を磨くこと。</p>
+  </div>
+
+  <div class="page" data-page="12">
+    <h2>11. エビデンス</h2>
+    <ul>
+      <li>Yang, 2014（プロ投手VO₂max=53.6）</li>
+      <li>Gillett, 2016（大学投手=48.1±5.3）</li>
+      <li>Clingman, 2023（先発>救援）</li>
+    </ul>
+  </div>
+
+  <div class="page" data-page="13">
+    <h2>12. 参考文献</h2>
+    <p><a href="https://pubmed.ncbi.nlm.nih.gov/24832970/" target="_blank">Yang, 2014</a> ／ 
+       <a href="https://www.researchgate.net/publication/295920185_A_Description_and_Comparison_of_Cardiorespiratory_Fitness_Measures_in_Relation_to_Pitching_Performance_Among_Professional_Baseball_Pitchers" target="_blank">Gillett, 2016</a><br>
+       <a href="https://oasis.library.unlv.edu/thesesdissertations/4658/" target="_blank">Clingman, 2023</a> ／ 
+       <a href="https://jamanetwork.com/journals/jama/article-abstract/336612" target="_blank">Cooper, 1968</a></p>
+    <p style="color:#9ca3af;">© 2025 ADJUSTMENT LAB</p>
+  </div>
+</div>
+
+<!-- 🔽 右下ナビゲーション -->
+<div id="nav-controls">
+  <div class="nav-btn" id="prev">← 戻る</div>
+  <div class="nav-btn" id="home">↑ トップ</div>
+  <div class="nav-btn" id="next">進む →</div>
 </div>
 
 <script>
-$(function(){
-  $('#flipbook').turn({
-    width:800,
-    height:500,
-    autoCenter:true
-  });
-});
+let currentPage = 1;
+const pages = document.querySelectorAll(".page");
+function showPage(n){
+  pages.forEach(p => p.style.display="none");
+  const page = pages[n-1];
+  if(page){ page.style.display="block"; window.scrollTo(0,0); }
+}
+document.getElementById("next").onclick = ()=>{
+  if(currentPage < pages.length){ currentPage++; showPage(currentPage); }
+};
+document.getElementById("prev").onclick = ()=>{
+  if(currentPage > 1){ currentPage--; showPage(currentPage); }
+};
+document.getElementById("home").onclick = ()=>{
+  currentPage = 1; showPage(currentPage);
+};
+
+// 初期ページ表示
+showPage(currentPage);
+
+// PWA登録
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("./service-worker.js");
+}
 </script>
 </body>
 </html>
