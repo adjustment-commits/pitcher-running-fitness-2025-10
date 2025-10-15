@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>turn.js テスト版</title>
+<title>turn.js動作テストOK版</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
@@ -16,11 +16,9 @@ body {
   align-items:center;
   height:100vh;
   margin:0;
+  overflow:auto;
 }
-#flipbook {
-  width:800px;
-  height:500px;
-}
+#flipbook { width:800px; height:500px; }
 .page {
   background:#111827;
   color:#e5e7eb;
@@ -29,15 +27,13 @@ body {
   padding:40px;
 }
 h1{color:#60a5fa;text-align:center;}
-h2{color:#93c5fd;}
 </style>
 </head>
 
 <body>
 <div id="flipbook">
-  <div class="page"><h1>Page 1</h1><p>ようこそ。これはturn.jsテストです。</p></div>
-  <div class="page"><h2>Page 2</h2><p>スワイプまたはクリックでめくってください。</p></div>
-  <div class="page"><h2>Page 3</h2><p>ページ送り成功！</p></div>
+  <div class="page"><h1>Page 1</h1><p>めくってみよう。</p></div>
+  <div class="page"><h1>Page 2</h1><p>ページ送り成功！</p></div>
 </div>
 
 <script>
@@ -49,7 +45,5 @@ $(function(){
   });
 });
 </script>
-  
-<script>console.log("turn.js", $.fn.turn ? "Loaded" : "Not Loaded");</script>
 </body>
 </html>
