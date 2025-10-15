@@ -63,6 +63,39 @@ ul{margin:8px 0 0 0;padding-left:20px;}
 @media(max-width:768px){
   #container { padding:24px; }
   .nav-btn{padding:8px 12px;font-size:14px;}
+
+/* 右下ドック（ナビ＋本格版リンクを縦並び） */
+#ui-dock{
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;     /* 右寄せ */
+  gap: 8px;                  /* 行間 */
+  z-index: 1000;
+}
+
+/* ナビ行（横並び） */
+#ui-dock .dock-row{
+  display: inline-flex;
+  gap: 10px;
+}
+
+/* 本格版リンク（ナビの下） */
+#ui-dock .dock-link{
+  display: inline-block;
+  background:#0f172a;
+  color:#f1f5f9;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+/* 画面下に固定UIぶんの逃げ余白（本文が隠れないように） */
+body{ padding-bottom: 120px; }   /* 必要なら数値を微調整 */
+@media (max-width:768px){
+  body{ padding-bottom: 140px; } /* モバイルは少し多め */
+}
 }
 </style>
 </head>
@@ -200,28 +233,17 @@ ul{margin:8px 0 0 0;padding-left:20px;}
     <p style="color:#9ca3af;">© 2025 adjustment-lab</p>
   </div>
 
-<!-- ✅ ナビゲーションボタン＋本格版リンク（上下配置） -->
-<div style="position:fixed; bottom:20px; right:16px; text-align:right; z-index:100;">
-
-  <!-- 🔹 ナビゲーション -->
-  <div id="nav-controls" style="display:flex; gap:10px; justify-content:flex-end; margin-bottom:8px;">
-    <div class="nav-btn" id="prev">← 戻る</div>
-    <div class="nav-btn" id="home">↑ トップ</div>
-    <div class="nav-btn" id="next">進む →</div>
+<!-- ✅ 右下ドック：ナビ + 本格版リンク（1つに統合） -->
+<div id="ui-dock">
+  <div class="dock-row">
+    <button class="nav-btn" id="prev">← 戻る</button>
+    <button class="nav-btn" id="home">↑ トップ</button>
+    <button class="nav-btn" id="next">進む →</button>
   </div>
 
-  <!-- 🔹 本格版リンク -->
-  <div id="full-link">
-    <a href="https://adjustment-commits.github.io/pitcher-vo2max/"
-       class="nav-btn"
-       style="display:inline-block; background:#0f172a; color:#f1f5f9;
-              text-decoration:none; font-size:13px; margin-top:4px;">
-       ▶︎ 詳しい解説を見る（本格版）
-    </a>
-    <p style="color:#94a3b8; font-size:12px; margin-top:4px; margin-right:6px;">
-      ※このページは簡易版です。
-    </p>
-  </div>
+  <a href="https://adjustment-commits.github.io/pitcher-vo2max/"
+     class="nav-btn dock-link">▶︎ 詳しい解説を見る（本格版）</a>
+</div>
 
 </div>
 
