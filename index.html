@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投手 × VO₂max（最大酸素摂取量）— 最終資料</title>
+<meta name="color-scheme" content="dark light">
+<style>
+  :root{
+    --bg:#0d1117; --ink:#e5e7eb; --muted:#94a3b8; --line:#1f2937;
+    --accent:#60a5fa; --accent-2:#f59e0b; --danger:#ef4444; --ok:#22c55e;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#ffffff; --ink:#0f172a; --muted:#475569; --line:#e5e7eb;
+           --accent:#2563eb; --accent-2:#b45309; }
+  }
+
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    line-height:1.8; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+
+  header{position:sticky; top:0; z-index:10; backdrop-filter: blur(6px);
+    background: color-mix(in oklab, var(--bg) 80%, transparent);
+    border-bottom:1px solid var(--line); padding:14px 16px;}
+  header h1{margin:0; font-size:clamp(18px, 2.8vw, 28px); color:var(--accent);}
+  header p.sub{margin:2px 0 0; color:var(--muted); font-size:14px;}
+
+  .wrap{max-width:980px; margin:0 auto; padding:22px 16px 80px;}
+  nav.toc{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:10px; margin:16px 0 26px;}
+  .toc a{display:block; padding:10px 12px; border:1px solid var(--line); border-radius:10px; color:var(--ink); text-decoration:none;}
+  .toc a:hover{border-color:var(--accent);}
+
+  h2{margin:28px 0 8px; font-size:clamp(18px, 2.4vw, 24px); color:var(--accent);}
+  h3{margin:18px 0 6px; font-size:clamp(16px, 2vw, 20px); color:var(--accent-2);}
+  p,li{font-size:clamp(14px, 1.9vw, 16px);}
+
+  .card{border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0; background: color-mix(in srgb, var(--bg) 92%, #0000);}
+  .key{border-left:4px solid var(--accent); padding:10px 12px; background: color-mix(in srgb, var(--bg) 94%, #0000);}
+  .danger{border-left:4px solid var(--danger);}
+  .ok{border-left:4px solid var(--ok);}
+
+  table{width:100%; border-collapse:collapse; margin:12px 0;}
+  th, td{border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; font-size:clamp(13px, 1.8vw, 15px);}
+  th{background: color-mix(in srgb, var(--bg) 90%, #0000);}
+
+  .pill{display:inline-block; padding:2px 8px; border:1px solid var(--line); border-radius:999px; font-size:12px; color:var(--muted); margin-right:6px;}
+  code{background: color-mix(in srgb, var(--bg) 90%, #0000); border:1px solid var(--line); padding:1px 6px; border-radius:6px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:13px;}
+
+  .grid-2{display:grid; grid-template-columns:1fr; gap:12px;}
+  @media (min-width:760px){ .grid-2{ grid-template-columns:1fr 1fr; } }
+
+  footer{margin-top:28px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:13px;}
+
+  /* 印刷 */
+  @media print{
+    header{position:static; background:none; border:none;}
+    .toc{display:none;}
+    a[href]:after{content:" (" attr(href) ")"; font-size:12px; color:var(--muted);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>投手 × VO₂max（最大酸素摂取量）— 最終資料</h1>
+  <p class="sub">出力はウエイトで作る。出力を戻すのは酸素だ。</p>
+</header>
+
+<main class="wrap">
+
+  <nav class="toc">
+    <a href="#sec1">1. 投手にとってのVO₂max</a>
+    <a href="#sec2">2. 投球エネルギーの二軸構造</a>
+    <a href="#sec3">3. VO₂maxが高いメリット</a>
+    <a href="#sec4">4. VO₂maxが低いデメリット</a>
+    <a href="#sec5">5. VO₂max値の意味</a>
+    <a href="#sec6">6. クーパー走換算</a>
+    <a href="#sec7">7. VO₂maxを高める例</a>
+    <a href="#sec8">8. 先発が狙うべきライン</a>
+    <a href="#sec9">9. 総括</a>
+  </nav>
+
+  <!-- 1 -->
+  <section id="sec1">
+    <h2>1. 投手にとってのVO₂maxとは？</h2>
+    <div class="card key">
+      <p>投手の本質は<strong>“出力を繰り返すための回復速度”</strong>にある。VO₂maxは、酸素を使って疲労物質を処理し、ATPを再合成する能力＝<strong>酸素エンジン</strong>の指標。</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="sec2">
+    <h2>2. 投球エネルギーの二軸構造</h2>
+    <table>
+      <thead>
+        <tr><th>機能</th><th>内容</th><th>主トレーニング</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill">出力系（発電）</span></td>
+          <td>ATP-CP系／解糖系で力を生む（球速・パワー）</td>
+          <td>ウエイト（SQ, DL, クリーン等）</td>
+        </tr>
+        <tr>
+          <td><span class="pill">回復系（再充電）</span></td>
+          <td>酸素で代謝物を処理しATP再合成（回復・持続）</td>
+          <td>VO₂max系（インターバル、サーキット等）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card key">
+      <p><strong>ウエイト＝燃やす力</strong> ／ <strong>VO₂max＝燃えたあとを立て直す力</strong>。両輪が噛み合って初めて、終盤まで球質が落ちない。</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="sec3">
+    <h2>3. VO₂maxが高いメリット</h2>
+    <ul>
+      <li>イニング間・登板間の<strong>回復が速い</strong></li>
+      <li>終盤でも<strong>球速・リリースの再現性</strong>が高い</li>
+      <li><strong>心拍降下</strong>が速く、交感神経の暴走を防ぐ</li>
+      <li>疲労蓄積が少なく、シーズン通して崩れにくい</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="sec4">
+    <h2>4. VO₂maxが低いデメリット（短期型の限界）</h2>
+    <div class="card danger">
+      <ul>
+        <li><strong>回復が遅い</strong>：翌日まで疲労を持ち越す</li>
+        <li><strong>再現性低下</strong>：球速・制球・テンポが乱れやすい</li>
+        <li><strong>心拍が下がりにくい</strong>：感情の波が大きくなる</li>
+        <li><strong>長回・連投に弱い</strong>：後半でパフォーマンス低下</li>
+        <li><strong>障害リスク増</strong>：代謝ストレス滞留による負荷増大</li>
+      </ul>
+      <p><em>比喩：</em>「火力はあるが<strong>冷却装置</strong>が小さいエンジン」。</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="sec5">
+    <h2>5. VO₂maxの数値が示す意味</h2>
+    <table>
+      <thead>
+        <tr><th>VO₂max（ml/kg/min）</th><th>状態</th><th>投手での傾向</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>40未満</td><td>非トレーニー水準</td><td>疲労蓄積・回復遅い</td></tr>
+        <tr><td>45〜55</td><td>平均的アスリート</td><td>一般的大学・社会人レベル</td></tr>
+        <tr><td><strong>58〜62</strong></td><td><strong>先発の理想ゾーン</strong></td><td>球威・テンポ・回復が安定</td></tr>
+        <tr><td>70前後</td><td>持久系エリート</td><td>陸上・水泳型（競技特化）</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6 -->
+  <section id="sec6">
+    <h2>6. クーパー走（12分走）換算の目安</h2>
+    <p>近似式：<code>VO₂max ≒ (距離[m] − 504.9) ÷ 44.73</code></p>
+    <table>
+      <thead>
+        <tr><th>12分距離</th><th>推定VO₂max</th><th>評価</th><th>現場での意味</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2500 m</td><td>約45</td><td>平均</td><td>終盤で息が乱れやすい</td></tr>
+        <tr><td>2800 m</td><td>約52</td><td>良好</td><td>一定の回復力はある</td></tr>
+        <tr><td><strong>3100 m</strong></td><td><strong>約58</strong></td><td><strong>理想</strong></td><td>7〜8回でも球質が維持</td></tr>
+        <tr><td><strong>3200 m</strong></td><td><strong>約60</strong></td><td><strong>エース級</strong></td><td>連投でも疲労が残りにくい</td></tr>
+      </tbody>
+    </table>
+    <div class="card ok">
+      <p><strong>選手への伝え方：</strong>「<u>距離＝回復力の指標</u>」。12分で<span style="white-space:nowrap">3100–3200m</span>は“投げ切る先発”のサイン。</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="sec7">
+    <h2>7. VO₂maxを高めるトレーニング例（目的＝酸素を使える体）</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>インターバルラン</h3>
+        <ul>
+          <li>400 m × 10本／レスト90秒</li>
+          <li>心拍170–180を維持</li>
+          <li>6–8週間で＋5–10%改善目安</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>トレッドミル・インターバル</h3>
+        <ul>
+          <li>30秒全力 → 90秒回復 × 8セット</li>
+          <li>有酸素と無酸素の切替能力を養成</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>ウエイト・サーキット（PHA）</h3>
+        <ul>
+          <li>SQ → PUSH-UP → ROW → LUNGE → BURPEE</li>
+          <li>各30秒 × 3セット／心拍150–170帯</li>
+          <li>筋と心肺を同時刺激（“酸素型ウエイト”）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>呼吸リカバリー訓練</h3>
+        <ul>
+          <li>1分以内に心拍を「投球前帯」へ戻す練習</li>
+          <li>鼻吸気＋長い呼気（4–6秒）で自律神経を整える</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="sec8">
+    <h2>8. 先発投手が狙うべきVO₂maxライン</h2>
+    <table>
+      <thead>
+        <tr><th>役割</th><th>VO₂max目標</th><th>クーパー距離</th><th>特徴</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>リリーフ型</td><td>50–55</td><td>2700–2950 m</td><td>短時間高出力</td></tr>
+        <tr><td><strong>先発型（推奨）</strong></td><td><strong>58–62</strong></td><td><strong>3100–3200 m</strong></td><td><strong>持続・回復・集中が安定</strong></td></tr>
+        <tr><td>エース級</td><td>63+</td><td>3250 m +</td><td>生理的レジリエンスが高い</td></tr>
+      </tbody>
+    </table>
+    <div class="card key">
+      <p><strong>指導ライン：</strong>55を越えると「持つように」なり、60を越えると「勝てる体」に近づく。</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="sec9">
+    <h2>9. 総括</h2>
+    <div class="card key">
+      <p><strong>出力を生むのがウエイト。出力を戻すのが酸素。</strong><br>両輪が揃って、先発投手は完成する。</p>
+    </div>
+    <p class="muted" style="color:var(--muted)">注：クーパー換算式は国内で広く参照される近似式（VO₂max ≒ (距離 − 504.9) / 44.73）。測定環境・気象条件・個人差により±誤差あり。プログラム設計では複数指標（心拍回復、RPE、HRV等）と併用すること。</p>
+  </section>
+
+  <footer>
+    <p>© 2025 ADJUSTMENT LAB — Pitching Performance Notes</p>
+  </footer>
+
+</main>
+</body>
+</html>
