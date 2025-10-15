@@ -10,9 +10,9 @@
 <meta name="theme-color" content="#0d1117">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 
-<!-- ✅ jQuery & turn.js（CDN） -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/turn.js@4/turn.min.js"></script>
+<!-- ✅ jQuery & turn.js（安定CDN） -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
 <style>
 body {
@@ -160,160 +160,9 @@ th{background:#1e293b;color:#93c5fd;}
 
 <!-- 📖 フリップブック -->
 <div id="flipbook">
-
-  <!-- Page 1 -->
-  <div class="page">
-    <h1 style="text-align:center;margin-top:100px;">投手 × VO₂max — Flipbook</h1>
-    <p style="text-align:center;color:#9ca3af;margin-top:20px;">出力を生むのがウエイト。出力を戻すのが酸素。<br>両輪が揃って、先発投手は完成する。</p>
-    <p style="text-align:center;margin-top:80px;color:#64748b;">© 2025 ADJUSTMENT LAB</p>
-  </div>
-
-  <!-- Page 2 -->
-  <div class="page">
-    <h2>1. 投手にとってのVO₂maxとは？</h2>
-    <p>投手の投球は「一球の力」ではなく、<strong>出力を繰り返すための回復速度</strong>で決まる。VO₂maxはその回復速度を決定づける“酸素エンジン”。</p>
-  </div>
-
-  <!-- Page 3 -->
-  <div class="page">
-    <h2>2. 投球エネルギーの二軸構造</h2>
-    <p><strong>ウエイト＝燃やす力／VO₂max＝燃えたあとを立て直す力</strong></p>
-    <table>
-      <tr><th>機能</th><th>内容</th><th>主な手段</th></tr>
-      <tr><td>出力系</td><td>ATP-CP系・解糖系で力を生む</td><td>ウエイトトレーニング</td></tr>
-      <tr><td>回復系</td><td>酸素を用いATP再合成し疲労を除去</td><td>VO₂maxトレーニング</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 4 -->
-  <div class="page">
-    <h2>3. VO₂maxが高いメリット</h2>
-    <ul>
-      <li>イニング間・登板間の回復が速い</li>
-      <li>終盤でも球速・リリース安定</li>
-      <li>交感神経の暴走を防ぐ</li>
-      <li>疲労蓄積が少なく崩れにくい</li>
-    </ul>
-  </div>
-
-  <!-- Page 5 -->
-  <div class="page">
-    <h2>4. VO₂maxが低いデメリット</h2>
-    <ul>
-      <li>回復が遅く疲労が残る</li>
-      <li>球速・制球の再現性が低下</li>
-      <li>心拍が下がりにくい</li>
-      <li>長回・連投に弱い</li>
-    </ul>
-  </div>
-
-  <!-- Page 6 -->
-  <div class="page">
-    <h2>5. VO₂maxの数値が意味するもの</h2>
-    <table>
-      <tr><th>VO₂max</th><th>状態</th><th>傾向</th></tr>
-      <tr><td>40未満</td><td>非トレーニー</td><td>疲労蓄積・回復遅い</td></tr>
-      <tr><td>45〜55</td><td>平均</td><td>一般的大学・社会人</td></tr>
-      <tr><td>58〜62</td><td>理想ゾーン</td><td>球威・テンポ安定</td></tr>
-      <tr><td>70前後</td><td>持久系エリート</td><td>陸上・水泳など</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 7 -->
-  <div class="page">
-    <h2>6. クーパー走（12分走）で見る目安</h2>
-    <p>VO₂max ≒ (距離[m] − 504.9) ÷ 44.73</p>
-    <table>
-      <tr><th>距離</th><th>VO₂max</th><th>評価</th></tr>
-      <tr><td>2500m</td><td>約45</td><td>平均</td></tr>
-      <tr><td>2800m</td><td>約52</td><td>良好</td></tr>
-      <tr><td>3100m</td><td>約58</td><td>理想</td></tr>
-      <tr><td>3200m</td><td>約60</td><td>エース級</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 8 -->
-  <div class="page">
-    <h2>7+. YO-YOテストによるVO₂max評価</h2>
-    <p>断続的高強度運動を繰り返す能力を測定し、VO₂maxを推定するフィールドテスト。</p>
-    <h3>実施方法</h3>
-    <ul>
-      <li>IR1：20m往復＋10秒休息（中強度）</li>
-      <li>IR2：20m往復＋10秒休息（高強度）</li>
-    </ul>
-    <h3>VO₂max ≒ (距離[m] × 0.0084) + 36.4</h3>
-    <table>
-      <tr><th>距離</th><th>VO₂max</th><th>評価</th></tr>
-      <tr><td>1600m</td><td>約49</td><td>平均</td></tr>
-      <tr><td>2000m</td><td>約53</td><td>良好</td></tr>
-      <tr><td>2400m</td><td>約56</td><td>理想</td></tr>
-      <tr><td>2800m</td><td>約60</td><td>エース級</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 9 -->
-  <div class="page">
-    <h2>8. VO₂maxを高めるトレーニング例</h2>
-    <ul>
-      <li>400m×10本（レスト90秒）</li>
-      <li>トレッドミル30秒全力→90秒回復×8</li>
-      <li>サーキット：SQ→Push-up→Row→Burpee</li>
-      <li>呼吸リカバリー（1分で心拍回復）</li>
-    </ul>
-  </div>
-
-  <!-- Page 10 -->
-  <div class="page">
-    <h2>9. 先発投手が狙うべきVO₂maxライン</h2>
-    <table>
-      <tr><th>役割</th><th>目標</th><th>距離</th></tr>
-      <tr><td>リリーフ</td><td>50〜55</td><td>2700〜2950m</td></tr>
-      <tr><td>先発</td><td>58〜62</td><td>3100〜3200m</td></tr>
-      <tr><td>エース</td><td>63+</td><td>3250m+</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 11 -->
-  <div class="page">
-    <h2>10. 総括</h2>
-    <p>「球速を上げる努力」は誰でもする。だが「次の球を同じ力で投げる努力」は少ない。</p>
-    <p>VO₂maxを鍛えることは、<strong>“最後まで戦えるエネルギー管理能力”</strong>を磨くこと。</p>
-  </div>
-
-  <!-- Page 12 -->
-  <div class="page">
-    <h2>11. エビデンス</h2>
-    <ul>
-      <li>Yang, 2014（プロ投手VO₂max=53.6）</li>
-      <li>Gillett, 2016（大学投手=48.1±5.3）</li>
-      <li>Clingman, 2023（先発>救援）</li>
-    </ul>
-  </div>
-
-  <!-- Page 13 -->
-  <div class="page">
-    <h2>12. カテゴリー別VO₂max活用</h2>
-    <table>
-      <tr><th>層</th><th>目安</th><th>目的</th></tr>
-      <tr><td>学童</td><td>40〜48</td><td>体を動かし続ける基礎形成</td></tr>
-      <tr><td>中学</td><td>45〜52</td><td>筋発達期の回復力教育</td></tr>
-      <tr><td>高校</td><td>50〜57</td><td>夏場持久力・リカバリー形成</td></tr>
-      <tr><td>大学</td><td>53〜60</td><td>連戦・登板間リカバリー</td></tr>
-      <tr><td>社会人</td><td>55〜62</td><td>仕事＋練習の疲労管理</td></tr>
-      <tr><td>独立</td><td>56〜63</td><td>連投・長距離移動適応</td></tr>
-      <tr><td>プロ</td><td>58〜65+</td><td>年間通した精神的・生理的安定</td></tr>
-    </table>
-  </div>
-
-  <!-- Page 14 -->
-  <div class="page">
-    <h2>13. 参考文献</h2>
-    <p><a href="https://pubmed.ncbi.nlm.nih.gov/24832970/" target="_blank">Yang, 2014</a> ／ 
-       <a href="https://www.researchgate.net/publication/295920185_A_Description_and_Comparison_of_Cardiorespiratory_Fitness_Measures_in_Relation_to_Pitching_Performance_Among_Professional_Baseball_Pitchers" target="_blank">Gillett, 2016</a><br>
-       <a href="https://oasis.library.unlv.edu/thesesdissertations/4658/" target="_blank">Clingman, 2023</a> ／ 
-       <a href="https://jamanetwork.com/journals/jama/article-abstract/336612" target="_blank">Cooper, 1968</a></p>
-    <p style="color:#9ca3af;">© 2025 ADJUSTMENT LAB</p>
-  </div>
+  <div class="page"><h1>投手 × VO₂max — Flipbook</h1></div>
+  <div class="page"><h2>VO₂maxとは？</h2><p>酸素エンジンだ。</p></div>
+  <div class="page"><h2>完動テスト</h2><p>フリップ動作チェック用。</p></div>
 </div>
 
 <!-- 📍 ナビ -->
@@ -326,19 +175,21 @@ th{background:#1e293b;color:#93c5fd;}
 <script>
 $(function(){
   const $book=$("#flipbook");
-  $book.turn({width:900,height:600,autoCenter:true,gradients:true});
+  $book.turn({
+    width:900,
+    height:600,
+    autoCenter:true,
+    display:'double',
+    gradients:true
+  });
 
-  // ドロワー
   $("#menu-btn").on("click",()=>{$("#drawer").toggleClass("open");$("#overlay").fadeToggle(200);});
   $("#overlay").on("click",()=>{$("#drawer").removeClass("open");$("#overlay").fadeOut(200);});
   $("#drawer a").on("click",function(e){e.preventDefault();$book.turn("page",$(this).data("page"));$("#drawer").removeClass("open");$("#overlay").fadeOut(200);});
-
-  // ナビ
   $("#next").on("click",()=> $book.turn("next"));
   $("#prev").on("click",()=> $book.turn("previous"));
   $("#home").on("click",()=> $book.turn("page",1));
 
-  // スワイプ
   let startX=0;
   document.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
   document.addEventListener("touchend",e=>{
@@ -346,11 +197,6 @@ $(function(){
     if(Math.abs(startX-endX)<60)return;
     startX>endX?$book.turn("next"):$book.turn("previous");
   });
-
-  // Service Worker
-  if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("./service-worker.js");
-  }
 });
 </script>
 </body>
