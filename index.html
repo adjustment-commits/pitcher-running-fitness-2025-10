@@ -41,14 +41,7 @@ th,td{border:1px solid #1f2937;padding:8px;text-align:left;}
 th{background:#1e293b;color:#93c5fd;}
 ul{margin:8px 0 0 0;padding-left:20px;}
 
-#nav-controls {
-  position:fixed;
-  bottom:20px;
-  right:16px;
-  display:flex;
-  gap:10px;
-  z-index:100;
-}
+/* ✅ ナビゲーションボタン（共通） */
 .nav-btn {
   background:#1e293b;
   border:1px solid #334155;
@@ -60,42 +53,45 @@ ul{margin:8px 0 0 0;padding-left:20px;}
 }
 .nav-btn:hover { background:#2563eb; border-color:#2563eb; }
 
-@media(max-width:768px){
-  #container { padding:24px; }
-  .nav-btn{padding:8px 12px;font-size:14px;}
-
-/* 右下ドック（ナビ＋本格版リンクを縦並び） */
-#ui-dock{
+/* ✅ 右下ドック（ナビ＋本格版リンクを縦並び） */
+#ui-dock {
   position: fixed;
   right: max(16px, env(safe-area-inset-right));
   bottom: max(16px, env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  align-items: flex-end;     /* 右寄せ */
-  gap: 8px;                  /* 行間 */
+  align-items: flex-end;   /* 右寄せ */
+  gap: 8px;                /* 行間 */
   z-index: 1000;
 }
 
 /* ナビ行（横並び） */
-#ui-dock .dock-row{
+#ui-dock .dock-row {
   display: inline-flex;
   gap: 10px;
 }
 
-/* 本格版リンク（ナビの下） */
-#ui-dock .dock-link{
+/* 本格版リンク（下段） */
+#ui-dock .dock-link {
   display: inline-block;
-  background:#0f172a;
-  color:#f1f5f9;
+  background:#2563eb;
+  color:#fff;
   text-decoration: none;
   font-size: 13px;
+  border: 1px solid #2563eb;
+  border-radius:6px;
+  padding:10px 16px;
+  transition: all 0.2s ease;
+}
+#ui-dock .dock-link:hover {
+  background:#1d4ed8;
 }
 
 /* 画面下に固定UIぶんの逃げ余白（本文が隠れないように） */
-body{ padding-bottom: 120px; }   /* 必要なら数値を微調整 */
+body { padding-bottom: 120px; }
 @media (max-width:768px){
-  body{ padding-bottom: 140px; } /* モバイルは少し多め */
-}
+  body { padding-bottom: 140px; }
+  .nav-btn, #ui-dock .dock-link { padding:8px 12px; font-size:13px; }
 }
 </style>
 </head>
@@ -106,13 +102,15 @@ body{ padding-bottom: 120px; }   /* 必要なら数値を微調整 */
           padding:8px 12px; border-radius:6px; font-size:13px; text-decoration:none;
           box-shadow:0 2px 6px rgba(0,0,0,0.2); z-index:50;">
    ⚾ 適性判定（Run）
-</a>
+  </a>
+
 <div id="container">
   <div class="page" data-page="1">
     <h1 style="text-align:center;">投手 × VO₂max — Flipfile</h1>
     <p style="text-align:center;color:#9ca3af;">出力を生むのがウエイト。出力を戻すのが酸素。<br>両輪が揃って、先発投手は完成する。</p>
     <p style="text-align:center;color:#64748b;margin-top:60px;">© 2025 adjustment-lab</p>
   </div>
+
   <div style="text-align:center;margin-top:40px;">
  </div>
 
@@ -233,7 +231,7 @@ body{ padding-bottom: 120px; }   /* 必要なら数値を微調整 */
     <p style="color:#9ca3af;">© 2025 adjustment-lab</p>
   </div>
 
-<!-- ✅ 右下ドック：ナビ + 本格版リンク（1つに統合） -->
+<!-- ✅ 右下ドック：ナビ + 本格版リンク -->
 <div id="ui-dock">
   <div class="dock-row">
     <button class="nav-btn" id="prev">← 戻る</button>
@@ -244,9 +242,6 @@ body{ padding-bottom: 120px; }   /* 必要なら数値を微調整 */
   <a href="https://adjustment-commits.github.io/pitcher-vo2max/"
      class="nav-btn dock-link">▶︎ 詳しい解説を見る（本格版）</a>
 </div>
-
-</div>
-
 
 <script>
 let currentPage = 1;
@@ -265,11 +260,8 @@ document.getElementById("prev").onclick = ()=>{
 document.getElementById("home").onclick = ()=>{
   currentPage = 1; showPage(currentPage);
 };
-
-// 初期ページ表示
 showPage(currentPage);
 
-// PWA登録
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("./service-worker.js");
 }
