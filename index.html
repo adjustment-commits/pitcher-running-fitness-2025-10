@@ -15,16 +15,17 @@
 <script src="https://cdn.jsdelivr.net/npm/turn.js@4/turn.min.js"></script>
 
 <style>
-body {
+ body {
   margin:0;
   background:#0d1117;
   color:#e5e7eb;
   font-family:'Noto Sans JP',sans-serif;
-  overflow:hidden;
+  /* overflow:hidden; ←削除 */
   display:flex;
   justify-content:center;
-  align-items:center;
-  height:100vh;
+  align-items:flex-start; /* ←中央から上寄せに変更 */
+  min-height:100vh;       /* ←height固定ではなくmin-height */
+  touch-action:pan-y;     /* ←スマホの縦スワイプを許可 */
 }
 #flipbook {
   width:900px;
