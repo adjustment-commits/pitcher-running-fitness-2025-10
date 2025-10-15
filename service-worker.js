@@ -1,7 +1,4 @@
-// =======================
-// Service Worker for Flipbook PWA
-// =======================
-const CACHE_NAME = "vo2max-flipbook-v1";
+const CACHE_NAME = "vo2max-flipbook-v1.0";
 const urlsToCache = [
   "./",
   "./index.html",
@@ -10,36 +7,41 @@ const urlsToCache = [
   "./icons/icon-512.png"
 ];
 
-// インストール（初回アクセス時）
-self.addEventListener("install", event => {
+// ✅ インストール時キャッシュ
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
-  console.log("Service Worker: Installed & Cached");
+  self.skipWaiting();
 });
 
-// フェッチ（オフライン対応）
-self.addEventListener("fetch", event => {
+// ✅ アクティブ化時の古いキャッシュ削除
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.map((key) => {
+        if (key !== CACHE_NAME) return caches.delete(key);
+      }))
+    )
+  );
+  self.clients.claim();
+});
+
+// ✅ リクエスト取得時のキャッシュ戦略
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
-    caches.match(event.request).then(response => {
-      // キャッシュにある場合はそれを返す、なければネットワークへ
-      return response || fetch(event.request);
-    })
-  );
-});
-
-// アップデート処理
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            console.log("Service Worker: Old cache deleted");
-            return caches.delete(cacheName);
-          }
+    caches.match(event.request).then((cached) => {
+      const fetchPromise = fetch(event.request)
+        .then((response) => {
+          // オフライン対応用にキャッシュ更新
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          return response;
         })
-      );
+        .catch(() => cached);
+      return cached || fetchPromise;
     })
   );
 });
