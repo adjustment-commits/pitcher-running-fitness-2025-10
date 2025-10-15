@@ -1,11 +1,12 @@
 {
   "name": "投手 × VO₂max — Flipbook",
-  "short_name": "VO₂max",
+  "short_name": "VO₂max Flipbook",
+  "lang": "ja",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
-  "description": "投手のためのVO₂max解説Flipbook。出力を生むウエイトと出力を戻す酸素を科学的に可視化。",
+  "description": "投手に必要な最大酸素摂取量（VO₂max）を体系的に学べるインタラクティブFlipbook資料。",
   "icons": [
     {
       "src": "icons/icon-192.png",
