@@ -3,199 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>投手 × VO₂max — Flipbook</title>
+<title>turn.js テスト版</title>
 
-<!-- ✅ PWA設定 -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0d1117">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-
-<!-- ✅ jQuery & turn.js（安定CDN） -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 
 <style>
 body {
-  margin:0;
   background:#0d1117;
-  color:#e5e7eb;
-  font-family:'Noto Sans JP',sans-serif;
-  overflow:hidden;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
+  margin:0;
 }
 #flipbook {
-  width:900px;
-  height:600px;
-  box-shadow:0 0 25px rgba(0,0,0,0.6);
+  width:800px;
+  height:500px;
 }
 .page {
   background:#111827;
+  color:#e5e7eb;
   border:1px solid #1f2937;
-  color:#e5e7eb;
+  box-sizing:border-box;
   padding:40px;
-  box-sizing:border-box;
-  position:relative;
-  overflow-y:auto;
 }
-h1,h2,h3{color:#60a5fa;margin-top:0;}
-a{color:#93c5fd;text-decoration:none;}
-p,li{line-height:1.8;}
-ul{margin-top:6px;}
-table{width:100%;border-collapse:collapse;margin-top:10px;}
-th,td{border:1px solid #1f2937;padding:6px 8px;text-align:left;}
-th{background:#1e293b;color:#93c5fd;}
-.page-num {
-  position:absolute;
-  bottom:8px;
-  right:12px;
-  font-size:13px;
-  color:#9ca3af;
-}
-
-/* --- ドロワーナビ --- */
-#menu-btn {
-  position:fixed;
-  top:10px;
-  left:12px;
-  background:#1e293b;
-  border:none;
-  color:#e5e7eb;
-  font-size:22px;
-  padding:8px 12px;
-  border-radius:8px;
-  z-index:20;
-  cursor:pointer;
-  transition:background 0.2s;
-}
-#menu-btn:hover{background:#2563eb;}
-#drawer {
-  position:fixed;
-  left:-260px;
-  top:0;
-  width:260px;
-  height:100vh;
-  background:#0f172a;
-  border-right:1px solid #1e293b;
-  box-shadow:2px 0 8px rgba(0,0,0,0.5);
-  transition:left 0.3s ease;
-  padding:22px 14px;
-  box-sizing:border-box;
-  overflow-y:auto;
-  z-index:15;
-}
-#drawer.open{left:0;}
-#drawer h3{color:#60a5fa;font-size:17px;margin-top:0;border-bottom:1px solid #1e293b;padding-bottom:6px;}
-#drawer a{display:block;color:#e5e7eb;font-size:15px;margin:10px 0;padding:6px 10px;border-radius:6px;}
-#drawer a:hover{background:#1e293b;}
-#overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.4);
-  z-index:10;
-  display:none;
-}
-
-/* --- 右下ナビボタン --- */
-#nav-controls {
-  position:fixed;
-  bottom:18px;
-  right:16px;
-  display:flex;
-  gap:10px;
-  z-index:25;
-}
-.nav-btn {
-  background:#1e293b;
-  border:1px solid #334155;
-  color:#e5e7eb;
-  font-size:14px;
-  padding:10px 16px;
-  border-radius:6px;
-  cursor:pointer;
-  transition:all 0.2s ease;
-  user-select:none;
-}
-.nav-btn:hover {
-  background:#2563eb;
-  border-color:#2563eb;
-}
-
-/* --- スマホ対応 --- */
-@media(max-width:768px){
-  body{flex-direction:column;height:auto;overflow:auto;}
-  #flipbook{width:100%;height:auto;}
-  .page{height:auto;}
-  #nav-controls{bottom:12px;right:10px;gap:6px;}
-  .nav-btn{padding:8px 12px;font-size:12px;border-radius:8px;}
-  #menu-btn{top:8px;left:10px;font-size:20px;padding:6px 10px;}
-}
+h1{color:#60a5fa;text-align:center;}
+h2{color:#93c5fd;}
 </style>
 </head>
 
 <body>
-
-<!-- ☰ ドロワーメニュー -->
-<button id="menu-btn">☰</button>
-<div id="drawer">
-  <h3>目次</h3>
-  <a href="#" data-page="1">表紙</a>
-  <a href="#" data-page="2">1. VO₂maxとは？</a>
-  <a href="#" data-page="3">2. 二軸構造</a>
-  <a href="#" data-page="4">3. 高いメリット</a>
-  <a href="#" data-page="5">4. 低いデメリット</a>
-  <a href="#" data-page="6">5. 数値の意味</a>
-  <a href="#" data-page="7">6. クーパー走換算</a>
-  <a href="#" data-page="8">7+. YO-YOテスト</a>
-  <a href="#" data-page="9">8. トレーニング例</a>
-  <a href="#" data-page="10">9. 先発ライン</a>
-  <a href="#" data-page="11">10. 総括</a>
-  <a href="#" data-page="12">11. エビデンス</a>
-  <a href="#" data-page="13">12. カテゴリー別活用</a>
-  <a href="#" data-page="14">13. 参考文献</a>
-</div>
-<div id="overlay"></div>
-
-<!-- 📖 フリップブック -->
 <div id="flipbook">
-  <div class="page"><h1>投手 × VO₂max — Flipbook</h1></div>
-  <div class="page"><h2>VO₂maxとは？</h2><p>酸素エンジンだ。</p></div>
-  <div class="page"><h2>完動テスト</h2><p>フリップ動作チェック用。</p></div>
-</div>
-
-<!-- 📍 ナビ -->
-<div id="nav-controls">
-  <div class="nav-btn" id="prev">← 戻る</div>
-  <div class="nav-btn" id="home">↑ トップ</div>
-  <div class="nav-btn" id="next">進む →</div>
+  <div class="page"><h1>Page 1</h1><p>ようこそ。これはturn.jsテストです。</p></div>
+  <div class="page"><h2>Page 2</h2><p>スワイプまたはクリックでめくってください。</p></div>
+  <div class="page"><h2>Page 3</h2><p>ページ送り成功！</p></div>
 </div>
 
 <script>
 $(function(){
-  const $book=$("#flipbook");
-  $book.turn({
-    width:900,
-    height:600,
-    autoCenter:true,
-    display:'double',
-    gradients:true
-  });
-
-  $("#menu-btn").on("click",()=>{$("#drawer").toggleClass("open");$("#overlay").fadeToggle(200);});
-  $("#overlay").on("click",()=>{$("#drawer").removeClass("open");$("#overlay").fadeOut(200);});
-  $("#drawer a").on("click",function(e){e.preventDefault();$book.turn("page",$(this).data("page"));$("#drawer").removeClass("open");$("#overlay").fadeOut(200);});
-  $("#next").on("click",()=> $book.turn("next"));
-  $("#prev").on("click",()=> $book.turn("previous"));
-  $("#home").on("click",()=> $book.turn("page",1));
-
-  let startX=0;
-  document.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
-  document.addEventListener("touchend",e=>{
-    const endX=e.changedTouches[0].clientX;
-    if(Math.abs(startX-endX)<60)return;
-    startX>endX?$book.turn("next"):$book.turn("previous");
+  $('#flipbook').turn({
+    width:800,
+    height:500,
+    autoCenter:true
   });
 });
 </script>
