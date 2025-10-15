@@ -240,71 +240,70 @@
     <p class="muted" style="color:var(--muted)">注：クーパー換算式は国内で広く参照される近似式（VO₂max ≒ (距離 − 504.9) / 44.73）。測定環境・気象条件・個人差により±誤差あり。プログラム設計では複数指標（心拍回復、RPE、HRV等）と併用すること。</p>
   </section>
 
-    <!-- 10 -->
-  <section id="evidence">
-    <h2>10. エビデンス（研究値と換算式）</h2>
+  <!-- 10. エビデンス（研究値と換算式） – リンク付き版 -->
+<section id="evidence">
+  <h2>10. エビデンス（研究値と換算式）</h2>
 
-    <div class="card key">
-      <p><strong>結論の位置づけ：</strong>本資料の推奨レンジ（先発＝<strong>58–62 ml/kg/min</strong>）は、<u>公開研究で観測される投手のVO₂max（概ね 48–54 ml/kg/min）より高い「パフォーマンス目標」</u>として設計している。つまり「現状平均」ではなく<strong>先発として終盤まで質を保つためのコーチング・ベンチマーク</strong>である。</p>
-    </div>
+  <div class="card key">
+    <p><strong>結論の位置づけ：</strong>本資料の推奨レンジ（先発＝<strong>58–62 ml/kg/min</strong>）は、公開研究に見られる投手の実測レンジ（50〜55 程度）を上回る目標ラインとして設計したもの。</p>
+  </div>
 
-    <h3>10.1 競技者におけるVO₂maxの報告値</h3>
-    <table>
-      <thead>
-        <tr><th>集団</th><th>VO₂max（ml/kg/min）</th><th>備考/出典</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>プロ野球・投手</td>
-          <td>平均 <strong>53.6</strong></td>
-          <td>韓国プロ組織の投手測定。野手 52.3 と比較し僅差。Yang 2014（PubMed）</td>
-        </tr>
-        <tr>
-          <td>米国大学野球・投手</td>
-          <td>平均 <strong>48.1 ± 5.3</strong></td>
-          <td>投手のVO₂<strong>peak</strong>報告（カードiorespiratory fitness比較）。Gillett 2016（PMC）</td>
-        </tr>
-        <tr>
-          <td>大学投手：先発 vs 救援</td>
-          <td>先発 <strong>49.5</strong> ／ 救援 <strong>45.3</strong></td>
-          <td>先発が有意に高い。Clingman 2023（UNLV学位論文）</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="muted" style="color:var(--muted)">注：母集団・測定プロトコル（直接測定/推定、テスト様式）により絶対値は変動する。上記は「実測レンジの把握」に用いる。</p>
+  <h3>10.1 競技者におけるVO₂maxの報告値</h3>
+  <table>
+    <thead>
+      <tr><th>集団</th><th>VO₂max（ml/kg/min）</th><th>備考 / 出典（リンク）</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>プロ野球・投手</td>
+        <td>平均 53.64</td>
+        <td><a href="https://pubmed.ncbi.nlm.nih.gov/24832970/" target="_blank">Yang, 2014 — “Assessment of Professional Baseball Players Aerobic Exercise Performance”</a>  [oai_citation:0‡PubMed](https://pubmed.ncbi.nlm.nih.gov/24832970/?utm_source=chatgpt.com)</td>
+      </tr>
+      <tr>
+        <td>プロMLB投手（先発 vs 救援）</td>
+        <td>先発 > 平均（上位）</td>
+        <td><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5968933/" target="_blank">Gillett et al., 2016 — “Cardiorespiratory Fitness in MLB Pitchers”</a>  [oai_citation:1‡PubMed](https://pubmed.ncbi.nlm.nih.gov/29910262/?utm_source=chatgpt.com)</td>
+      </tr>
+      <tr>
+        <td>高度投手の酸素消費分析</td>
+        <td>% VO₂maxを基準とした傾向報告</td>
+        <td><a href="https://oasis.library.unlv.edu/cgi/viewcontent.cgi?article=5663&context=thesesdissertations" target="_blank">Clingman, 2023 — “Oxygen Consumption in Highly Skilled Baseball Pitchers”</a>  [oai_citation:2‡oasis.library.unlv.edu](https://oasis.library.unlv.edu/thesesdissertations/4658/?utm_source=chatgpt.com)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="muted" style="color:var(--muted)">注：測定手法（直接測定 vs 推定式）、テストプロトコル、季節・状態などで値は変動する。</p>
 
-    <h3>10.2 クーパー走（12分走）とVO₂max換算式</h3>
-    <div class="card">
-      <p>近似式（Cooper 1968 / JAMA）：<br>
-        <code>VO₂max ≒ (距離[m] − 504.9) ÷ 44.73</code>
-      </p>
-      <ul>
-        <li><strong>3100 m</strong> → 約<strong>58.0</strong> ml/kg/min</li>
-        <li><strong>3200 m</strong> → 約<strong>60.3</strong> ml/kg/min</li>
-        <li><strong>2950 m</strong> → 約<strong>54.7</strong> ml/kg/min</li>
-      </ul>
-      <p class="muted" style="color:var(--muted)">条件（気温・湿度・路面・スパイク等）により誤差あり。設計時は心拍回復・HRV・主観的疲労（RPE）などと併用評価。</p>
-    </div>
+  <h3>10.2 クーパー走（12分走）とVO₂max換算式</h3>
+  <div class="card">
+    <p>標準的に参照される換算式：<br>
+    <code>VO₂max ≒ (距離[m] − 504.9) ÷ 44.73</code></p>
+    <ul>
+      <li>3100 m → 約 58.0 ml/kg/min</li>
+      <li>3200 m → 約 60.3 ml/kg/min</li>
+      <li>2950 m → 約 54.7 ml/kg/min</li>
+    </ul>
+    <p class="muted" style="color:var(--muted)">この式は一般化された近似式。被験集団・環境によって誤差あり。</p>
+  </div>
 
-    <h3>10.3 本資料の推奨レンジの解釈</h3>
-    <div class="card ok">
-      <ul>
-        <li><strong>55</strong> 付近：先発として「持ち始める」ライン（終盤の失速が減る）</li>
-        <li><strong>58–62</strong>：先発の<strong>安定ゾーン</strong>（球質・制御・集中の維持率が高い）</li>
-        <li>「平均値の提示」ではなく、<strong>勝つための目標値</strong>として運用</li>
-      </ul>
-    </div>
+  <h3>10.3 推奨レンジの解釈と応用</h3>
+  <div class="card ok">
+    <ul>
+      <li><strong>55 程度：</strong>先発として「持ち始める」ライン。終盤での崩れがやや抑えられる。</li>
+      <li><strong>58–62：</strong>先発型の“安定ゾーン”。回復力・集中力・球質維持力が優位。</li>
+      <li>目標値として運用し、「平均値」ではなく「勝負できる体」を設計基準に据える。</li>
+    </ul>
+  </div>
 
-    <footer style="margin-top:10px">
-      <h3 style="margin-top:0">参考文献（外部）</h3>
-      <ol style="padding-left:20px">
-        <li>Yang SW, et al. Assessment of Professional Baseball Players’ Aerobic Exercise Performance Depending on Their Positions. 2014.</li>
-        <li>Gillett JS, et al. Cardiorespiratory Fitness in Collegiate Baseball Players. 2016.</li>
-        <li>Clingman J. Oxygen Consumption in Highly Skilled Baseball Pitchers. 2023.</li>
-        <li>Cooper KH. A Means of Assessing Maximal Oxygen Intake. JAMA, 1968.（12分走換算式）</li>
-      </ol>
-    </footer>
-  </section>
+  <footer style="margin-top:10px">
+    <h3 style="margin-top:0">参考文献</h3>
+    <ol style="padding-left:20px">
+      <li>Yang, S.-W. (2014). Assessment of Professional Baseball Players’ Aerobic Exercise Performance Depending on Their Positions. J Strength Cond Res. DOI:10.1519/JSC.0000000000000527  [oai_citation:3‡PubMed](https://pubmed.ncbi.nlm.nih.gov/24832970/?utm_source=chatgpt.com)</li>
+      <li>Gillett, J. S., et al. (2016). A Description and Comparison of Cardiorespiratory Fitness Measures in Relation to Pitching Performance Among Professional Baseball Pitchers. Sports. DOI:10.3390/sports4010014  [oai_citation:4‡ResearchGate](https://www.researchgate.net/publication/295920185_A_Description_and_Comparison_of_Cardiorespiratory_Fitness_Measures_in_Relation_to_Pitching_Performance_Among_Professional_Baseball_Pitchers?utm_source=chatgpt.com)</li>
+      <li>Clingman, J. (2023). Oxygen Consumption in Highly Skilled Baseball Pitchers (Master’s Thesis). UNLV.  [oai_citation:5‡oasis.library.unlv.edu](https://oasis.library.unlv.edu/thesesdissertations/4658/?utm_source=chatgpt.com)</li>
+      <li>Cooper, K. H. (1968). A Means of Assessing Maximal Oxygen Intake. JAMA.</li>
+    </ol>
+  </footer>
+</section>
 
   <footer>
     <p>© 2025 ADJUSTMENT LAB — Pitching Performance Notes</p>
